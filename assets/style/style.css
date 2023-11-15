@@ -85,3 +85,10 @@ body{
 	font-weight: 400;
 	text-decoration: none;
 }
+
+.error_message{
+	color: red;
+	font-size: 14px;
+	font-weight: 400;
+	text-align: center;
+}
