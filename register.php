@@ -20,10 +20,11 @@ if(isset($_POST["submitButton"])){
 	
 
 	if($success){
+		//store session here
+		$_SESSION["userLoggedIn"] = $username;
 		header("Location: index.php");
 	}
 }
-
 
 
 ?>
@@ -51,22 +52,22 @@ if(isset($_POST["submitButton"])){
 
 				<?php echo $account->getErr(Constants::$firstnamechar); ?>
 
-				<input type="text" name="firstName" placeholder = "first name" required>
+				<input type="text" name="firstName" placeholder = "first name" value = "<?php $account->get_input_data("firstName"); ?>" required>
 
 				<?php echo $account->getErr(Constants::$lastnamechar); ?>
 
-				<input type="text" name="lastName" placeholder = "last name" required>
+				<input type="text" name="lastName" placeholder = "last name" value = "<?php $account->get_input_data("lastName"); ?>" required>
 
 				<?php echo $account->getErr(Constants::$usernamechar); ?>
 				<?php echo $account->getErr(Constants::$usernameTaken); ?>
 
-				<input type="text" name="username" placeholder = "user name" required>
+				<input type="text" name="username" placeholder = "user name" value = "<?php $account->get_input_data("username"); ?>" required>
 
 				<?php echo $account->getErr(Constants::$diffEmail); ?>
 				<?php echo $account->getErr(Constants::$emailInvalid); ?>
 				<?php echo $account->getErr(Constants::$emailTaken); ?>
 
-				<input type="email" name="email" placeholder = "email" required>
+				<input type="email" name="email" placeholder = "email" value = "<?php $account->get_input_data("email"); ?>" required>
 				<input type="email" name="email2" placeholder = "confirm email" required>
 
 				<?php echo $account->getErr(Constants::$diffpass); ?>

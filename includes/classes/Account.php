@@ -43,6 +43,7 @@ class Account {
 
     }
 
+
     private function insertUserDetails($fn, $ln, $un, $em1 ,$pw1){
         
         //to secure password
@@ -68,6 +69,14 @@ class Account {
     private function validateLastName($ln){
         if (strlen($ln)<3 || strlen($ln)>25){
             array_push($this->errorarray, Constants::$lastnamechar);
+        }
+    }
+
+    //function to retain info on the page
+
+    public function get_input_data($x){
+        if(isset($_POST["$x"])){
+            echo $_POST["$x"];
         }
     }
 

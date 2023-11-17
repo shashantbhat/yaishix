@@ -16,6 +16,8 @@ if(isset($_POST["submitButton"])){
 	
 
 	if($success){
+		//here store sessin info
+		$_SESSION["userLoggedIn"] = $username;
 		header("Location: index.php");
 	}
 }
@@ -44,7 +46,7 @@ if(isset($_POST["submitButton"])){
 			<form method = "post">
 
 				<?php echo $account->getErr(Constants::$loginFailed); ?>
-				<input type="text" name="username" placeholder = "user name" required>
+				<input type="text" name="username" placeholder = "user name" value = "<?php $account->get_input_data("username"); ?>" required>
 				
 				<input type="password" name="password" placeholder = "password" required>
 
