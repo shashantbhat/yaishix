@@ -1,12 +1,10 @@
 <?php
-require_once("includes/config.php");
 
-if(!isset($_SESSION["userLoggedIn"])){
-    header("Location: register.php");
-}
+require_once("includes/header.php");
 
-else {
-    echo "welcome to netflix";
-}
+$preview = new PreviewProvider($con, $userLoggedIn);
+echo $preview->createPreviewVideo(null);
 
+$containers = new categoryContainers($con, $userLoggedIn);
+echo $containers->showAllCategories();
 ?>
