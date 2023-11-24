@@ -23,7 +23,7 @@ class PreviewProvider{
 
         //TO DO: ADD A SUBTITLE
 
-        echo "<div class = 'previewContainer' >
+        return "<div class = 'previewContainer' >
 
                     <img src='$thumbnail' class = 'previewImage' hidden>
 
@@ -48,15 +48,24 @@ class PreviewProvider{
                 </div>";
     }
 
-    private function getRandomEntity(){
-        
-        $query = $this->con->prepare("SELECT * FROM entities ORDER BY RAND() LIMIT 1");
-        $query->execute();
+    public function createEntityPreviewSquare($entity){
+        $id = $entity->get_id();
+        $thumbnail = $entity->get_thumbnail();
+        $name = $entity->get_name();
 
-        $row = $query->fetch(PDO::FETCH_ASSOC);
-        
-        return new entity($this->con, $row);
-        }
+        return "<a href='Entity.php?id=$id'>
+                    <div class = 'previewContainer small'>
+                        <img src = '$thumbnail' title = '$name'>
+                    </div>
+                </a>";        
+    }
+
+    private function getRandomEntity() {
+
+        $entity = entityProvider::get_entities($this->con, null, 1);
+        return $entity[0];
+    }
+
 }
 
 ?>

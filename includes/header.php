@@ -4,6 +4,12 @@ require_once("includes/config.php");
 require_once("includes/classes/PreviewProvider.php");
 require_once("includes/classes/entity.php");
 require_once("includes/classes/categoryContainers.php");
+require_once("includes/classes/entityProvider.php");
+require_once("includes/classes/errorMessage.php");
+require_once("includes/classes/seasonProvider.php");
+require_once("includes/classes/seasons.php");
+require_once("includes/classes/video.php");
+
 
 if(!isset($_SESSION["userLoggedIn"])){
     header("Location: register.php");
