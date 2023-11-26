@@ -19,6 +19,36 @@ class video {
 
         $this->entity = new entity($con, $this->sqlData["entityId"]);
     }
+
+    public function getId() {
+        return $this->sqlData["id"];
+    }
+
+    public function getTitle() {
+        return $this->sqlData["title"];
+    }
+
+    public function getDescription() {
+        return $this->sqlData["description"];
+    }
+
+    public function getFilePath() {
+        return $this->sqlData["filePath"];
+    }
+
+    public function getThumbnail() {
+        return $this->entity->get_thumbnail();
+    }
+
+    public function getEpisodeNumber() {
+        return $this->sqlData["episode"];
+    }
+
+    public function incrementViews(){
+        $query = $this->con->prepare("UPDATE videos SET views = views + 1 WHERE id =:id");
+        $query->bindValue(":id", $this->getId());
+        $query->execute();
+    }
 }
 ?>
 
