@@ -9,15 +9,16 @@ require_once("includes/classes/errorMessage.php");
 require_once("includes/classes/seasonProvider.php");
 require_once("includes/classes/seasons.php");
 require_once("includes/classes/video.php");
+require_once("includes/classes/videoProvider.php");
 
 
 if(!isset($_SESSION["userLoggedIn"])){
     header("Location: register.php");
 }
 
-else {
-    echo "welcome to Yaishix"."<br>";
-}
+// else {
+//     echo "welcome to Yaishix"."<br>";
+// }
 
 $userLoggedIn = $_SESSION["userLoggedIn"];
 
@@ -37,4 +38,8 @@ $userLoggedIn = $_SESSION["userLoggedIn"];
 </head>
 <body>
     <div class ='wrapper'>
-
+<?php
+if(!isset($hideNav)){
+    include_once("includes/navBar.php");
+}
+?>
